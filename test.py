@@ -1,14 +1,40 @@
 import requests
 
-url = "https://www.expedia.com/Flights-Search?flight-type=on&mode=search&trip=roundtrip&leg1=from:Chicago,%20IL,%20United%20States%20of%20America%20(ORD-O%27Hare%20Intl.),to:New%20York,%20NY,%20United%20States%20of%20America%20(NYC-All%20Airports),departure:5/8/2025TANYT,fromType:AIRPORT,toType:METROCODE&leg2=from:New%20York,%20NY,%20United%20States%20of%20America%20(NYC-All%20Airports),to:Chicago,%20IL,%20United%20States%20of%20America%20(ORD-O%27Hare%20Intl.),departure:5/15/2025TANYT,fromType:METROCODE,toType:AIRPORT&options=cabinclass:economy&fromDate=5/8/2025&toDate=5/15/2025&d1=2025-5-8&d2=2025-5-15&passengers=adults:1,infantinlap:N"
+def fetch_flight_data():
+    # Define the API endpoint
+    url = "https://serpapi.com/search"
+    
+    # Define the query parameters, including the API key
+    params = {
+        "engine": "google_flights",
+        "departure_id": "JFK",  # Replace with your desired departure airport code
+        "arrival_id": "LAX",  # Replace with your desired arrival airport code
+        "outbound_date": "2025-05-01",  # Replace with your desired outbound date
+        "return_date": "2025-05-10",  # Replace with your desired return date
+        "currency": "USD",  # Currency for the results
+        "hl": "en",  # Language for the results
+        "api_key": "b378ab498cb0201bc87157b6ee171c79baf592943012e7293a8051c53e18ecdd"  # Your API key
+    }
+    
+    try:
+        # Make the GET request
+        response = requests.get(url, params=params)
+        
+        # Check if the request was successful
+        if response.status_code == 200:
+            # Parse and return the JSON data
+            data = response.json()
+            return data
+        else:
+            print(f"Error: Received status code {response.status_code}")
+            print(f"Response: {response.text}")  # Print the response for debugging
+            return None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
 
-headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
-}
-
-response = requests.get(url, headers=headers)
-
-if response.status_code == 200:
-    print(response.text)  # This will print the HTML content of the page
-else:
-    print(f"Failed to fetch the page. Status code: {response.status_code}")
+# Example usage
+if __name__ == "__main__":
+    flight_data = fetch_flight_data()
+    if flight_data:
+        print(flight_data)
