@@ -1,0 +1,25 @@
+<form method="POST" class="search-form">
+    <div class="form-group">
+        <label for="from_airport">From:</label>
+        <select name="from_airport" id="from_airport" required>
+            <option value="">Select departure airport</option>
+            {% for airport in airports %}
+                <option value="{{ airport }}" {% if selected_from == airport %}selected{% endif %}>
+                    {{ airport }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="to_airport">To:</label>
+        <select name="to_airport" id="to_airport" required>
+            <option value="">Select arrival airport</option>
+            {% for airport in airports %}
+                <option value="{{ airport }}" {% if selected_to == airport %}selected{% endif %}>
+                    {{ airport }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit">Search</button>
+</form> 
