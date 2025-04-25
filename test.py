@@ -46,7 +46,7 @@ def find_cheapest_price_from_file(file_path):
 
 # Example usage
 if __name__ == "__main__":
-    file_path = "d:\\Personal\\cheapFlightScraper\\flight_data.json"  # Path to the JSON file
+    file_path = "./flight_data.json"  # Path to the JSON file
     cheapest_flight = find_cheapest_price_from_file(file_path)
     if cheapest_flight:
         print("Cheapest Flight Details:")
