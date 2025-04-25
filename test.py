@@ -24,7 +24,7 @@ def find_cheapest_price_from_file(file_path):
     for flight_group in ["best_flights", "other_flights"]:
         if flight_group in data:
             for flight in data[flight_group]:
-                if "price" in flight and flight["price"] < cheapest_price:
+                if "price" in flight and flight["price"] <= cheapest_price:
                     cheapest_price = flight["price"]
                     # Extract flight details
                     first_leg = flight["flights"][0]
