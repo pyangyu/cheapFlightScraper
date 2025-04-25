@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheap Flight Scraper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        select {
+            padding: 8px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 400px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cheap Flight Scraper</h1>
+    <div class="container">
+        <form method="POST">
+            <div>
+                <label for="from_airport">From:</label>
+                <select name="from_airport" id="from_airport" required>
+                    <option value="">Select departure airport</option>
+                    {% for airport in airports %}
+                        <option value="{{ airport }}" {% if selected_from == airport %}selected{% endif %}>
+                            {{ airport }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="to_airport">To:</label>
+                <select name="to_airport" id="to_airport" required>
+                    <option value="">Select arrival airport</option>
+                    {% for airport in airports %}
+                        <option value="{{ airport }}" {% if selected_to == airport %}selected{% endif %}>
+                            {{ airport }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if selected_from and selected_to %}
+        <div class="result">
+            <h3>Selected Airports:</h3>
+            <p>From: {{ selected_from }}</p>
+            <p>To: {{ selected_to }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html> 
