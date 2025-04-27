@@ -23,8 +23,8 @@ def transform_airports_json(input_file, output_file):
         json.dump(transformed_data, file, indent=4)
 
 # Input and output file paths
-input_file = "d:\\Personal\\cheapFlightScraper\\airports.json"
-output_file = "d:\\Personal\\cheapFlightScraper\\flight_data.json"
+input_file = "./airports.json"
+output_file = "./flight_data.json"
 
 # Run the function
 transform_airports_json(input_file, output_file)
