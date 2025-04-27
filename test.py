@@ -1,17 +1,6 @@
 import json
 
-def find_cheapest_price_from_file(file_path):
-    # Read the JSON data from the file
-    try:
-        with open(file_path, "r") as json_file:
-            data = json.load(json_file)
-    except FileNotFoundError:
-        print(f"Error: File not found at {file_path}")
-        return None
-    except json.JSONDecodeError:
-        print(f"Error: Failed to decode JSON from {file_path}")
-        return None
-
+def find_cheapest_price_from_file(data):
     # Initialize variables to store the cheapest flight details
     cheapest_price = float('inf')
     cheapest_flight_details = None
@@ -47,9 +36,16 @@ def find_cheapest_price_from_file(file_path):
 # Example usage
 if __name__ == "__main__":
     file_path = "./flight_data.json"  # Path to the JSON file
-    cheapest_flight = find_cheapest_price_from_file(file_path)
-    if cheapest_flight:
-        print("Cheapest Flight Details:")
-        print(json.dumps(cheapest_flight, indent=4))
-    else:
-        print("No flight details found.")
+    try:
+        with open(file_path, "r") as json_file:
+            data = json.load(json_file)
+        cheapest_flight = find_cheapest_price_from_file(data)
+        if cheapest_flight:
+            print("Cheapest Flight Details:")
+            print(json.dumps(cheapest_flight, indent=4))
+        else:
+            print("No flight details found.")
+    except FileNotFoundError:
+        print(f"Error: File not found at {file_path}")
+    except json.JSONDecodeError:
+        print(f"Error: Failed to decode JSON from {file_path}")
