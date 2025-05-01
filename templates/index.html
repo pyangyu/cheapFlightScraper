@@ -69,6 +69,14 @@
         .form-switch {
             padding-left: 2.5em;
         }
+        .airport-result-item div {
+            color: black; /* Change the text color to black */
+        }
+        input:disabled {
+            background-color: #e9ecef; /* Light gray background */
+            color: #6c757d; /* Darker text color */
+            cursor: not-allowed; /* Show not-allowed cursor */
+        }
     </style>
 </head>
 <body>
@@ -80,45 +88,21 @@
                 <div class="row">
                     <div class="col-md-3">
                         <label for="from_airport" class="form-label">From</label>
-                        <div class="d-flex align-items-center mb-2">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="use_search_from" checked>
-                                <label class="form-check-label" for="use_search_from">Use Search</label>
-                            </div>
-                        </div>
                         <div id="from_airport_search_container" class="airport-search-container">
                             <input type="text" class="form-control" id="airport_search" 
                                    placeholder="Search by city or airport name">
                             <div class="airport-results" id="airport_results"></div>
                             <input type="hidden" name="from_airport" id="from_airport" value="{{ selected_from }}">
                         </div>
-                        <select class="form-select d-none" id="from_airport_dropdown" name="from_airport">
-                            <option value="">Select departure airport</option>
-                            {% for code, name, city in airports %}
-                            <option value="{{ code }}" {% if selected_from == code %}selected{% endif %}>{{ name }}</option>
-                            {% endfor %}
-                        </select>
                     </div>
                     <div class="col-md-3">
                         <label for="to_airport" class="form-label">To (Optional)</label>
-                        <div class="d-flex align-items-center mb-2">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="use_search" checked>
-                                <label class="form-check-label" for="use_search">Use Search</label>
-                            </div>
-                        </div>
                         <div id="to_airport_search_container" class="airport-search-container">
                             <input type="text" class="form-control" id="to_airport_search" 
                                    placeholder="Search by city or airport name">
                             <div class="airport-results" id="to_airport_results"></div>
                             <input type="hidden" name="to_airport" id="to_airport" value="{{ selected_to }}">
                         </div>
-                        <select class="form-select d-none" id="to_airport_dropdown" name="to_airport">
-                            <option value="">Select arrival airport (optional)</option>
-                            {% for code, name, city in airports %}
-                            <option value="{{ code }}" {% if selected_to == code %}selected{% endif %}>{{ name }}</option>
-                            {% endfor %}
-                        </select>
                     </div>
                     <div class="col-md-3">
                         <label for="outbound_date" class="form-label">Departure Date</label>
@@ -129,6 +113,9 @@
                         <label for="return_date" class="form-label">Return Date</label>
                         <input type="text" class="form-control date-picker" id="return_date" name="return_date" 
                                value="{{ selected_return }}" required>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button type="button" class="btn btn-secondary" id="falsedate_button" onclick="toggleFalsedate()">Falsedate</button>
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -174,53 +161,112 @@
             allowInput: true
         });
 
+        // Ensure Return Date is greater than Departure Date
+        const departureDateInput = document.getElementById('outbound_date');
+        const returnDateInput = document.getElementById('return_date');
+
+        flatpickr(departureDateInput, {
+            minDate: "today",
+            dateFormat: "Y-m-d",
+            allowInput: true,
+            onChange: function (selectedDates) {
+                if (selectedDates.length > 0) {
+                    const selectedDate = selectedDates[0];
+                    returnDateInput._flatpickr.set('minDate', selectedDate); // Update Return Date's minDate
+                }
+            }
+        });
+
+        flatpickr(returnDateInput, {
+            minDate: "today",
+            dateFormat: "Y-m-d",
+            allowInput: true
+        });
+
+        // Load flight data from the JSON file
+        let flightData = {};
+
+        fetch('/static/flight_data_us.json') // Ensure the JSON file is accessible via this path
+            .then(response => response.json())
+            .then(data => {
+                flightData = data;
+            });
+
+        // Calculate string similarity using Levenshtein distance
+        function getSimilarityScore(query, target) {
+            const queryLength = query.length;
+            const targetLength = target.length;
+            const dp = Array.from({ length: queryLength + 1 }, () => Array(targetLength + 1).fill(0));
+
+            for (let i = 0; i <= queryLength; i++) dp[i][0] = i;
+            for (let j = 0; j <= targetLength; j++) dp[0][j] = j;
+
+            for (let i = 1; i <= queryLength; i++) {
+                for (let j = 1; j <= targetLength; j++) {
+                    if (query[i - 1] === target[j - 1]) {
+                        dp[i][j] = dp[i - 1][j - 1];
+                    } else {
+                        dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1;
+                    }
+                }
+            }
+
+            return dp[queryLength][targetLength];
+        }
+
         // Airport search functionality
         function setupAirportSearch(inputId, resultsId, hiddenInputId) {
             const airportSearch = document.getElementById(inputId);
             const airportResults = document.getElementById(resultsId);
-            const fromAirport = document.getElementById(hiddenInputId);
+            const hiddenInput = document.getElementById(hiddenInputId);
             let searchTimeout;
 
-            airportSearch.addEventListener('input', function() {
+            airportSearch.addEventListener('input', function () {
                 clearTimeout(searchTimeout);
-                const query = this.value.trim();
-                
+                const query = this.value.trim().toLowerCase();
+
                 if (query.length < 2) {
                     airportResults.style.display = 'none';
                     return;
                 }
 
                 searchTimeout = setTimeout(() => {
-                    fetch(`/search_airports?q=${encodeURIComponent(query)}`)
-                        .then(response => response.json())
-                        .then(data => {
-                            airportResults.innerHTML = '';
-                            if (data.length > 0) {
-                                data.forEach(airport => {
-                                    const div = document.createElement('div');
-                                    div.className = 'airport-result-item';
-                                    div.innerHTML = `
-                                        <div class="airport-code">${airport.code}</div>
-                                        <div>${airport.name}</div>
-                                        <div class="airport-city">${airport.city}</div>
-                                    `;
-                                    div.addEventListener('click', () => {
-                                        airportSearch.value = `${airport.name} (${airport.code})`;
-                                        fromAirport.value = airport.code;
-                                        airportResults.style.display = 'none';
-                                    });
-                                    airportResults.appendChild(div);
-                                });
-                                airportResults.style.display = 'block';
-                            } else {
+                    // Rank matches by similarity to the query
+                    const matches = Object.values(flightData)
+                        .map(airport => {
+                            const cityScore = getSimilarityScore(query, airport.city.toLowerCase());
+                            const idScore = getSimilarityScore(query, airport.id.toLowerCase());
+                            const minScore = Math.min(cityScore, idScore); // Use the closest match
+                            return { ...airport, score: minScore };
+                        })
+                        .sort((a, b) => a.score - b.score); // Sort by similarity score (lower is better)
+
+                    airportResults.innerHTML = '';
+                    if (matches.length > 0) {
+                        matches.forEach(airport => {
+                            const div = document.createElement('div');
+                            div.className = 'airport-result-item';
+                            div.innerHTML = `
+                                <div class="airport-code">${airport.id}</div>
+                                <div>${airport.city}</div>
+                                <div class="airport-name">${airport.name}</div>
+                            `;
+                            div.addEventListener('click', () => {
+                                airportSearch.value = `${airport.city} (${airport.id})`;
+                                hiddenInput.value = airport.id;
                                 airportResults.style.display = 'none';
-                            }
+                            });
+                            airportResults.appendChild(div);
                         });
+                        airportResults.style.display = 'block';
+                    } else {
+                        airportResults.style.display = 'none';
+                    }
                 }, 300);
             });
 
             // Close results when clicking outside
-            document.addEventListener('click', function(e) {
+            document.addEventListener('click', function (e) {
                 if (!airportSearch.contains(e.target) && !airportResults.contains(e.target)) {
                     airportResults.style.display = 'none';
                 }
@@ -231,35 +277,20 @@
         setupAirportSearch('airport_search', 'airport_results', 'from_airport');
         setupAirportSearch('to_airport_search', 'to_airport_results', 'to_airport');
 
-        // Toggle between search and dropdown for From
-        const useSearchFrom = document.getElementById('use_search_from');
-        const searchContainerFrom = document.getElementById('from_airport_search_container');
-        const dropdownFrom = document.getElementById('from_airport_dropdown');
+        // Toggle falsedate functionality
+        function toggleFalsedate() {
+            const departureDate = document.getElementById('outbound_date');
+            const returnDate = document.getElementById('return_date');
+            const falsedateButton = document.getElementById('falsedate_button');
 
-        useSearchFrom.addEventListener('change', function() {
-            if (this.checked) {
-                searchContainerFrom.classList.remove('d-none');
-                dropdownFrom.classList.add('d-none');
-            } else {
-                searchContainerFrom.classList.add('d-none');
-                dropdownFrom.classList.remove('d-none');
-            }
-        });
+            // Toggle the disabled state of the inputs
+            const isDisabled = departureDate.disabled;
+            departureDate.disabled = !isDisabled;
+            returnDate.disabled = !isDisabled;
 
-        // Toggle between search and dropdown for To
-        const useSearch = document.getElementById('use_search');
-        const searchContainer = document.getElementById('to_airport_search_container');
-        const dropdown = document.getElementById('to_airport_dropdown');
-
-        useSearch.addEventListener('change', function() {
-            if (this.checked) {
-                searchContainer.classList.remove('d-none');
-                dropdown.classList.add('d-none');
-            } else {
-                searchContainer.classList.add('d-none');
-                dropdown.classList.remove('d-none');
-            }
-        });
+            // Update the button text based on the state
+            falsedateButton.textContent = isDisabled ? 'Falsedate' : 'Enable Dates';
+        }
     </script>
 </body>
-</html> 
+</html>
