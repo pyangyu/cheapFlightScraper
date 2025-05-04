@@ -175,12 +175,23 @@ HEADERS = {
 }
 
 def parse_info(text, destination):
+    """
+    解析航班信息文本，提取价格、日期和航空公司信息
+    参数:
+        text: 包含航班信息的文本
+        destination: 目的地城市
+    返回:
+        解析后的航班信息字典或None（如果解析失败）
+    """
+    # 匹配航班日期和航空公司信息
     match = re.search(r'Select (.*?) flight.*?departing .*? ([A-Z][a-z]+ \d+).*?returning .*? ([A-Z][a-z]+ \d+)', text)
+    # 匹配价格信息
     price_match = re.search(r'([$€£])(\d+)', text)
 
     if not (match and price_match):
         return None
 
+    # 处理日期
     year = datetime.now().year
     try:
         out_date = datetime.strptime(f"{match[2]} {year}", "%b %d %Y").strftime("%Y-%m-%d")
@@ -199,17 +210,26 @@ def parse_info(text, destination):
     }
 
 def crawl(destination):
+    """
+    从Expedia抓取指定目的地的航班信息
+    参数:
+        destination: 目的地城市
+    返回:
+        (目的地, 航班信息列表)的元组
+    """
     url = f"https://www.expedia.com/lp/flights/chi/{destination.lower()}"
     try:
+        # 发送请求获取页面内容
         response = requests.get(url, headers=HEADERS, timeout=15)
         if response.status_code != 200:
-            print(f"[{destination}] Failed to fetch, status: {response.status_code}")
+            print(f"[{destination}] 请求失败，状态码: {response.status_code}")
             return destination.lower(), []
 
+        # 解析页面内容
         tree = html.fromstring(response.content)
-        # 这是一个假设的 XPath，真实页面可能不同（需要你打开页面源代码查看）
         spans = tree.xpath('//span[contains(@class, "is-visually-hidden")]/text()')
 
+        # 提取航班信息
         results = []
         for text in spans:
             text = text.strip()
@@ -220,22 +240,31 @@ def crawl(destination):
 
         return destination.lower(), results
     except Exception as e:
-        print(f"[{destination}] Error: {e}")
+        print(f"[{destination}] 错误: {e}")
         return destination.lower(), []
-    
+
 def crawl2(departure, destination):
+    """
+    从Google Flights抓取指定出发地和目的地的航班信息
+    参数:
+        departure: 出发城市
+        destination: 目的地城市
+    返回:
+        (目的地, 航班信息列表)的元组
+    """
     url = f"https://www.google.com/travel/flights/flights-from-{departure.lower()}-to-{destination.lower()}.html"
     try:
+        # 发送请求获取页面内容
         response = requests.get(url, headers=HEADERS, timeout=15)
         if response.status_code != 200:
-            print(f"[{destination}] Failed to fetch, status: {response.status_code}")
+            print(f"[{destination}] 请求失败，状态码: {response.status_code}")
             return destination.lower(), []
 
+        # 解析页面内容
         tree = html.fromstring(response.content)
-
-        # 示例：抓取页面标题或描述等静态内容（JS 渲染的航班数据抓不到）
         ul_elements = tree.xpath('//h2[contains(text(), "Popular airlines")]/ancestor::section[1]//ul')
 
+        # 提取航班信息
         results = []
         for ul in ul_elements:
             li_elements = ul.xpath('.//li')
@@ -246,24 +275,29 @@ def crawl2(departure, destination):
 
         return destination, results
     except Exception as e:
-        print(f"[{destination}] Error: {e}")
+        print(f"[{destination}] 错误: {e}")
         return destination.lower(), {}
 
 def main():
-    start = time.time()  # 开始计时
+    """
+    主函数：并行抓取所有城市对的航班信息并保存结果
+    """
+    start = time.time()
 
+    # 初始化结果存储
     grouped_results = defaultdict(dict)
     city_pairs = list(itertools.product(DEPARTURES, DESTINATIONS))
 
+    # 使用线程池并行抓取数据
     with ThreadPoolExecutor(max_workers=5) as executor:
         futures = executor.map(lambda args: crawl2(*args), city_pairs)
-
         for (departure, destination), results in zip(city_pairs, futures):
             grouped_results[departure][destination] = results
 
+    # 保存结果到JSON文件
     with open("flights_output.json", "w", encoding="utf-8") as f:
         json.dump(grouped_results, f, indent=2, ensure_ascii=False)
 
-    end = time.time()  # 结束计时
-    print(f"Saved to flights_output.json")
-    print(f"⏱️ Total execution time: {end - start:.2f} seconds")
+    end = time.time()
+    print(f"结果已保存到 flights_output.json")
+    print(f"⏱️ 总执行时间: {end - start:.2f} 秒")
