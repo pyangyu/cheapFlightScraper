@@ -111,55 +111,7 @@ DEPARTURES = [
     "west-palm-beach"
 ]
 
-DESTINATIONS = [
-    "atlanta",
-    "los-angeles",
-    "chicago",            # O'Hare or Midway 都可以叫 chicago
-    "dallas",             # 合并 DFW 和 DAL
-    "denver",
-    "new-york",           # JFK 和 LGA 可统一为 new-york
-    "san-francisco",
-    "seattle",
-    "las-vegas",
-    "orlando",
-    "charlotte",
-    "phoenix",
-    "miami",
-    "houston",            # IAH 和 HOU 合并为 houston
-    "boston",
-    "minneapolis",        # 对应 MSP
-    "fort-lauderdale",
-    "detroit",
-    "philadelphia",
-    "baltimore",
-    "salt-lake-city",
-    "washington",         # 可统一 DCA/IAD 为 washington
-    "san-diego",
-    "tampa",
-    "honolulu",
-    "austin",
-    "st-louis",
-    "nashville",
-    "portland",
-    "san-jose",
-    "oakland",
-    "cleveland",
-    "sacramento",
-    "fort-myers",
-    "pittsburgh",
-    "kansas-city",
-    "santa-ana",          # 对应 Orange County
-    "new-orleans",
-    "raleigh",
-    "columbus",
-    "san-antonio",
-    "ontario",            # California
-    "indianapolis",
-    "cincinnati",
-    "jacksonville",
-    "anchorage",
-    "west-palm-beach"
-]
+DESTINATIONS = DEPARTURES
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -174,74 +126,53 @@ HEADERS = {
     "Upgrade-Insecure-Requests": "1",
 }
 
-def parse_info(text, destination):
+def parse_flight_info(text):
     """
-    解析航班信息文本，提取价格、日期和航空公司信息
+    解析航班信息文本，提取关键信息
     参数:
         text: 包含航班信息的文本
-        destination: 目的地城市
     返回:
         解析后的航班信息字典或None（如果解析失败）
     """
-    # 匹配航班日期和航空公司信息
-    match = re.search(r'Select (.*?) flight.*?departing .*? ([A-Z][a-z]+ \d+).*?returning .*? ([A-Z][a-z]+ \d+)', text)
-    # 匹配价格信息
-    price_match = re.search(r'([$€£])(\d+)', text)
-
-    if not (match and price_match):
-        return None
-
-    # 处理日期
-    year = datetime.now().year
     try:
-        out_date = datetime.strptime(f"{match[2]} {year}", "%b %d %Y").strftime("%Y-%m-%d")
-        ret_date = datetime.strptime(f"{match[3]} {year}", "%b %d %Y").strftime("%Y-%m-%d")
-    except:
-        return None
+        # 提取航空公司名称
+        airline_match = re.search(r'^(\w+)\s+(?:Nonstop\s+)?from', text)
+        if not airline_match:
+            return None
+        airline = airline_match.group(1)
 
-    return {
-        "departure_id": "chicago",
-        "destination_id": destination.lower(),
-        "currency": price_match[1],
-        "price": int(price_match[2]),
-        "outbound_date": out_date,
-        "return_date": ret_date,
-        "flight_company": match[1]
-    }
+        # 提取最低价格
+        min_price_match = re.search(r'from\s+\$(\d+)', text)
+        min_price = int(min_price_match.group(1)) if min_price_match else None
 
-def crawl(destination):
-    """
-    从Expedia抓取指定目的地的航班信息
-    参数:
-        destination: 目的地城市
-    返回:
-        (目的地, 航班信息列表)的元组
-    """
-    url = f"https://www.expedia.com/lp/flights/chi/{destination.lower()}"
-    try:
-        # 发送请求获取页面内容
-        response = requests.get(url, headers=HEADERS, timeout=15)
-        if response.status_code != 200:
-            print(f"[{destination}] 请求失败，状态码: {response.status_code}")
-            return destination.lower(), []
+        # 提取价格区间
+        price_range_match = re.search(r'Typical price:\s+\$(\d+)–(\d+)', text)
+        if price_range_match:
+            price_min = int(price_range_match.group(1))
+            price_max = int(price_range_match.group(2))
+        else:
+            price_min = price_max = None
 
-        # 解析页面内容
-        tree = html.fromstring(response.content)
-        spans = tree.xpath('//span[contains(@class, "is-visually-hidden")]/text()')
+        # 提取航班类型和数量
+        is_nonstop = 'Nonstop' in text
+        flights_match = re.search(r'(\d+)\s+weekly\s+(nonstop|connecting)\s+flights', text)
+        weekly_flights = int(flights_match.group(1)) if flights_match else None
+        flight_type = flights_match.group(2) if flights_match else None
 
-        # 提取航班信息
-        results = []
-        for text in spans:
-            text = text.strip()
-            if text.startswith("Select") and "flight" in text:
-                data = parse_info(text, destination)
-                if data:
-                    results.append(data)
-
-        return destination.lower(), results
+        return {
+            "airline": airline,
+            "is_nonstop": is_nonstop,
+            "min_price": min_price,
+            "price_range": {
+                "min": price_min,
+                "max": price_max
+            },
+            "weekly_flights": weekly_flights,
+            "flight_type": flight_type
+        }
     except Exception as e:
-        print(f"[{destination}] 错误: {e}")
-        return destination.lower(), []
+        print(f"解析错误: {e}")
+        return None
 
 def crawl2(departure, destination):
     """
@@ -271,12 +202,14 @@ def crawl2(departure, destination):
             for li in li_elements:
                 text = ' '.join(li.xpath('.//text()')).strip()
                 if text:
-                    results.append(text)
+                    flight_info = parse_flight_info(text)
+                    if flight_info:
+                        results.append(flight_info)
 
-        return destination, results
+        return destination.lower(), results
     except Exception as e:
         print(f"[{destination}] 错误: {e}")
-        return destination.lower(), {}
+        return destination.lower(), []
 
 def main():
     """
@@ -292,7 +225,8 @@ def main():
     with ThreadPoolExecutor(max_workers=5) as executor:
         futures = executor.map(lambda args: crawl2(*args), city_pairs)
         for (departure, destination), results in zip(city_pairs, futures):
-            grouped_results[departure][destination] = results
+            if results:  # 只保存有结果的航线
+                grouped_results[departure][destination] = results
 
     # 保存结果到JSON文件
     with open("flights_output.json", "w", encoding="utf-8") as f:
