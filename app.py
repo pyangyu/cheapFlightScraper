@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, jsonify
 from fetch_flight_data_and_save import fetch_flight_data
 import json
-from datetime import datetime, timedelta
+from datetime import datetime
 
 app = Flask(__name__)
 
 # Load US airports
-with open("flight_data_us.json", "r") as f:
+with open("static/flight_data_us.json", "r") as f:
     US_AIRPORTS = json.load(f)
 
 # Convert to list of tuples (code, name, city) for dropdown and search
@@ -69,7 +69,7 @@ def index():
                             'data': flight_data
                         })
             
-            return render_template('index.html',
+            return render_template('result.html',
                                 airports=AIRPORT_OPTIONS,
                                 results=results,
                                 selected_from=departure_id,
@@ -77,12 +77,18 @@ def index():
                                 selected_outbound=outbound_date.strftime('%Y-%m-%d'),
                                 selected_return=return_date.strftime('%Y-%m-%d'))
         except ValueError:
-            return render_template('index.html',
+            return render_template('result.html',
                                 airports=AIRPORT_OPTIONS,
                                 error="Invalid date format")
     
-    return render_template('index.html',
+    return render_template('result.html',
                          airports=AIRPORT_OPTIONS)
 
+@app.route('/result', methods=['GET'])
+def result():
+    # Get the "from_airport" parameter from the query string
+    from_airport = request.args.get('from_airport', 'No input provided')
+    return render_template('result.html', from_airport=from_airport)
+
 if __name__ == '__main__':
-    app.run(debug=True) 
+    app.run(debug=True)

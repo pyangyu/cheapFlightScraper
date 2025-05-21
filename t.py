@@ -13,9 +13,6 @@ def transform_airports_json(input_file, output_file):
             transformed_data[iata] = {
                 "id": iata,
                 "name": value.get("name", ""),
-                "city": value.get("city", ""),
-                "state": value.get("state", ""),
-                "country": value.get("country", "")
             }
 
     # Write the transformed data back to a new JSON file
@@ -24,7 +21,7 @@ def transform_airports_json(input_file, output_file):
 
 # Input and output file paths
 input_file = "./airports.json"
-output_file = "./flight_data.json"
+output_file = "./flight_data1.json"
 
 # Run the function
 transform_airports_json(input_file, output_file)
