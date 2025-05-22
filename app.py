@@ -86,9 +86,38 @@ def index():
 
 @app.route('/result', methods=['GET'])
 def result():
-    # Get the "from_airport" parameter from the query string
-    from_airport = request.args.get('from_airport', 'No input provided')
-    return render_template('result.html', from_airport=from_airport)
+    from_airport = request.args.get('from_airport', '').lower()  # Get the city from the query parameter
+    try:
+        # Load the flights_output.json file
+        with open('flights_output.json', 'r') as file:
+            flights_data = json.load(file)
+        # Get data for the specified city
+        city_data = flights_data.get(from_airport, {})  # Default to an empty dictionary if not found
+        print(city_data["honolulu"])
+        # Filter and keep only the top 20 locations based on min_price
+        if city_data:
+            # Remove entries with NoneType min_price
+            cleaned_destinations = {
+                key: value for key, value in city_data.items()
+                if isinstance(value[1], dict) and value[1].get("min_price") is not None
+            }
+            cleaned_destinations
+            # Sort destinations by min_price
+            sorted_destinations = sorted(
+                cleaned_destinations.items(),
+                key=lambda x: x[1][1]["min_price"]
+            )
+            # Keep only the top 20 destinations
+            top_20_destinations = dict(sorted_destinations[:20])
+            city_data = top_20_destinations
+
+    except FileNotFoundError:
+        city_data = {"error": "Flights data file not found."}
+    except json.JSONDecodeError:
+        city_data = {"error": "Error decoding flights data."}
+
+    # Pass the filtered data to the template
+    return render_template('result.html', from_airport=from_airport, city_data=city_data)
 
 if __name__ == '__main__':
     app.run(debug=True)

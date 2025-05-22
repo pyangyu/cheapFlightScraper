@@ -10,11 +10,46 @@
 <body>
     {% include 'header.html' %}
 
-    <!-- Display the input value below -->
     <main class="container mt-5">
         <div id="search-result-box" class="alert alert-info text-center">
-            You searched for: {{ from_airport }}
+            <h3>Search Results for: {{ from_airport }}</h3>
         </div>
+
+        {% if city_data %}
+            <div class="row">
+                {% for location, details in city_data.items() %}
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ from_airport }} → {{ location }}</h5>
+                                <p class="card-text">
+                                    <strong>Min Price:</strong> ${{ details[1].min_price }}
+                                </p>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#details-{{ loop.index }}" aria-expanded="false" aria-controls="details-{{ loop.index }}">
+                                    View Flights
+                                </button>
+                                <div class="collapse mt-3" id="details-{{ loop.index }}">
+                                    {% for flight in details[1].data %}
+                                        <div class="border p-2 mb-2">
+                                            <p><strong>Airline:</strong> {{ flight.airline }}</p>
+                                            <p><strong>Flight Type:</strong> {{ flight.flight_type }}</p>
+                                            <p><strong>Min Price:</strong> ${{ flight.min_price }}</p>
+                                            <p><strong>Price Range:</strong> ${{ flight.price_range.min }} - ${{ flight.price_range.max }}</p>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-warning mt-4">
+                No data found for the selected city.
+            </div>
+        {% endif %}
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
