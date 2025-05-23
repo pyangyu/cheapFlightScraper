@@ -131,10 +131,77 @@ def parse_flight_info_for_faq(question, answer):
     把原始的 FAQ 问题和答案文本再做清洗或整合，返回一个 dict。
     在这里统一命名 key, 做后续处理。
     """
-    return {
-        "question": question,
-        "answer": answer
-    }
+    # Skip FAQs 4, 5, 6, and 9
+    if any(skip in question.lower() for skip in ["best airline", "direct flights available", "airlines have direct", "find cheap dates"]):
+        return None
+
+    result = {}
+    
+    # FAQ 1: Travel time
+    if "how long does it take" in question.lower():
+        time_match = re.search(r'(\d+)\s+hr\s+(\d+)\s+min', answer)
+        if time_match:
+            hours = int(time_match.group(1))
+            minutes = int(time_match.group(2))
+            result["travel_time"] = f"{hours}hr {minutes}min"
+    
+    # FAQ 2: Cheapest month
+    elif "cheapest days" in question.lower():
+        month_match = re.search(r'in\s+(\w+)\.\s+Typical\s+ticket\s+prices.*?\$(\d+)\s+to\s+\$(\d+)', answer)
+        if month_match:
+            result["cheapest_month"] = {
+                "month": month_match.group(1),
+                "price_range": {
+                    "min": int(month_match.group(2)),
+                    "max": int(month_match.group(3))
+                }
+            }
+    
+    # FAQ 3: Cheapest airlines
+    elif "cheapest flights" in question.lower() and "airlines" in question.lower():
+        airlines_info = []
+        # Extract round-trip info
+        round_trip_match = re.search(r'cheapest round-trip flight.*?with\s+(\w+)\s+from\s+\$(\d+)', answer)
+        if round_trip_match:
+            airlines_info.append(f"round-trip {round_trip_match.group(1)}: ${round_trip_match.group(2)}")
+        
+        # Extract one-way info
+        one_way_match = re.search(r'cheapest one-way flight.*?with\s+(\w+)\s+from\s+\$(\d+)', answer)
+        if one_way_match:
+            airlines_info.append(f"one-way {one_way_match.group(1)}: ${one_way_match.group(2)}")
+        
+        # Extract other airline deals
+        airline_deals = re.finditer(r'The cheapest (\w+) flight.*?is \$(\d+)', answer)
+        for deal in airline_deals:
+            airlines_info.append(f"{deal.group(1)}: ${deal.group(2)}")
+        
+        if airlines_info:
+            result["cheapest_airlines"] = airlines_info
+    
+    # FAQ 7: Cheapest airline details
+    elif "what are the cheapest flights" in question.lower():
+        round_trip_match = re.search(r'starts at \$(\d+) from (.*?)\.', answer)
+        one_way_match = re.search(r'one-way flight starts at \$(\d+) and departs on (.*?)\.', answer)
+        
+        cheapest_info = {}
+        if round_trip_match:
+            cheapest_info["round_trip"] = {
+                "price": f"${round_trip_match.group(1)}",
+                "dates": round_trip_match.group(2)
+            }
+        if one_way_match:
+            cheapest_info["one_way"] = {
+                "price": f"${one_way_match.group(1)}",
+                "date": one_way_match.group(2)
+            }
+        if cheapest_info:
+            result["cheapest_airline"] = cheapest_info
+    
+    # FAQ 8: Destination info
+    elif "when should you" in question.lower():
+        result["destination_info"] = answer
+
+    return result if result else None
 
 def parse_flight_info(text):
     """
@@ -151,15 +218,15 @@ def parse_flight_info(text):
             return None
         airline = airline_match.group(1)
 
-        # 提取最低价格
-        min_price_match = re.search(r'from\s+\$(\d+)', text)
-        min_price = int(min_price_match.group(1)) if min_price_match else None
+        # 提取最低价格 (处理带逗号的格式，如 $1,134)
+        min_price_match = re.search(r'from\s+\$([\d,]+)', text)
+        min_price = int(min_price_match.group(1).replace(',', '')) if min_price_match else None
 
-        # 提取价格区间
-        price_range_match = re.search(r'Typical price:\s+\$(\d+)–(\d+)', text)
+        # 提取价格区间 (处理不同的格式，如 $1,250–1,450 或 $300-$1,900)
+        price_range_match = re.search(r'Typical price:\s+\$([\d,]+)[–-]\$?([\d,]+)', text)
         if price_range_match:
-            price_min = int(price_range_match.group(1))
-            price_max = int(price_range_match.group(2))
+            price_min = int(price_range_match.group(1).replace(',', ''))
+            price_max = int(price_range_match.group(2).replace(',', ''))
         else:
             price_min = price_max = None
 
@@ -228,11 +295,8 @@ def crawl2(departure, destination):
                     a_text = ' '.join(faq_div.xpath('./div[2]//text()')).strip()
                     if q_text and a_text:
                         faq_info = parse_flight_info_for_faq(q_text, a_text)
-                        # 给结果里追加一个带序号的字典
-                        results.append({
-                            f"faqquestion_{idx}": faq_info["question"],
-                            f"faqanswer_{idx}": faq_info["answer"]
-                        })
+                        if faq_info:  # 只添加非None的结果
+                            results.append(faq_info)
 
         return results
 
