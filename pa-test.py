@@ -126,6 +126,16 @@ HEADERS = {
     "Upgrade-Insecure-Requests": "1",
 }
 
+def parse_flight_info_for_faq(question, answer):
+    """
+    把原始的 FAQ 问题和答案文本再做清洗或整合，返回一个 dict。
+    在这里统一命名 key, 做后续处理。
+    """
+    return {
+        "question": question,
+        "answer": answer
+    }
+
 def parse_flight_info(text):
     """
     解析航班信息文本，提取关键信息
@@ -176,40 +186,59 @@ def parse_flight_info(text):
 
 def crawl2(departure, destination):
     """
-    从Google Flights抓取指定出发地和目的地的航班信息
-    参数:
-        departure: 出发城市
-        destination: 目的地城市
-    返回:
-        (目的地, 航班信息列表)的元组
+    从 Google Flights 抓取航班信息 + Frequently asked questions
+    返回: (departure, destination, list_of_flight_dicts_and_faq_dicts)
     """
     url = f"https://www.google.com/travel/flights/flights-from-{departure.lower()}-to-{destination.lower()}.html"
     try:
-        # 发送请求获取页面内容
+        # 1. 请求页面
         response = requests.get(url, headers=HEADERS, timeout=15)
         if response.status_code != 200:
-            print(f"[{destination}] 请求失败，状态码: {response.status_code}")
-            return destination.lower(), []
+            print(f"[{departure}->{destination}] 请求失败，状态码: {response.status_code}")
+            return departure, destination, []
 
-        # 解析页面内容
         tree = html.fromstring(response.content)
-        ul_elements = tree.xpath('//h2[contains(text(), "Popular airlines")]/ancestor::section[1]//ul')
-
-        # 提取航班信息
         results = []
+
+        # 2. 抓航班列表
+        # 先按组抓，再按文本解析
+        ul_elements = tree.xpath('//h2[contains(text(), "Popular airlines")]/ancestor::section[1]//ul')
         for ul in ul_elements:
-            li_elements = ul.xpath('.//li')
-            for li in li_elements:
+            for li in ul.xpath('.//li'):
                 text = ' '.join(li.xpath('.//text()')).strip()
                 if text:
                     flight_info = parse_flight_info(text)
                     if flight_info:
                         results.append(flight_info)
 
-        return destination.lower(), results
+        # 3. 抓 FAQ
+        # 找到 <h2>…Frequently asked questions…</h2> 的第一个祖先 <section>
+        faq_section = tree.xpath('//h2[contains(text(), "Frequently asked questions")]/ancestor::section[1]')
+        if faq_section:
+            sec = faq_section[0]
+            # 取该 section 下面的第二个直接子 <div>
+            divs = sec.xpath('./div')
+            if len(divs) >= 2:
+                faq_container = divs[1]
+                # 取这个 container 下所有子 <div>，每个是一个问答组
+                faq_groups = faq_container.xpath('./div')
+                for idx, faq_div in enumerate(faq_groups, start=1):
+                    # 每个 faq_div 下第1个子 div 是 question，第2个是 answer
+                    q_text = ' '.join(faq_div.xpath('./div[1]//text()')).strip()
+                    a_text = ' '.join(faq_div.xpath('./div[2]//text()')).strip()
+                    if q_text and a_text:
+                        faq_info = parse_flight_info_for_faq(q_text, a_text)
+                        # 给结果里追加一个带序号的字典
+                        results.append({
+                            f"faqquestion_{idx}": faq_info["question"],
+                            f"faqanswer_{idx}": faq_info["answer"]
+                        })
+
+        return results
+
     except Exception as e:
-        print(f"[{destination}] 错误: {e}")
-        return destination.lower(), []
+        print(f"[{departure}->{destination}] 抓取异常: {e}")
+        return departure, destination, []
 
 def main():
     """
@@ -225,13 +254,16 @@ def main():
     with ThreadPoolExecutor(max_workers=5) as executor:
         futures = executor.map(lambda args: crawl2(*args), city_pairs)
         for (departure, destination), results in zip(city_pairs, futures):
-            if results:  # 只保存有结果的航线
+            if results and departure != destination:
                 grouped_results[departure][destination] = results
 
     # 保存结果到JSON文件
-    with open("flights_output.json", "w", encoding="utf-8") as f:
+    with open("flights_output_new.json", "w", encoding="utf-8") as f:
         json.dump(grouped_results, f, indent=2, ensure_ascii=False)
 
     end = time.time()
     print(f"结果已保存到 flights_output.json")
     print(f"⏱️ 总执行时间: {end - start:.2f} 秒")
+
+if __name__ == "__main__":
+    main() 
