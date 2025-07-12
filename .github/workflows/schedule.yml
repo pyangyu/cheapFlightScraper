@@ -25,16 +25,28 @@ jobs:
 
       - name: Debug List files
         run: ls -al
-
+      
       - name: Run pa-test.py
-        run: python pa-test.py
+        run: |
+          python pa-test.py || echo "pa-test.py exited with code $?"
+
+      - name: Debug list & peek output
+        run: |
+          echo "Working dir: $(pwd)"
+          ls -al .
+          if [ -f flights_output_new.json ]; then
+            echo "=== flights_output_new.json head ==="
+            head -n 20 flights_output_new.json
+          else
+            echo "!!! flights_output_new.json not found !!!"
+          fi
 
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add flights_output_new.json
-          git commit -m "Update flights_output_new.json (scheduled)"
+          git commit -m "Update flights_output_new.json (scheduled)" || echo "No changes to commit"
           git push origin HEAD:${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
