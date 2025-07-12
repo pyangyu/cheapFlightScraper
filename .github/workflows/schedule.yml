@@ -3,7 +3,7 @@ name: Scheduled Flight Script
 on:
   workflow_dispatch:  # ✅ 允许手动触发
   schedule:           # ✅ 每天自动触发
-    - cron: "50 4 * * *"  # UTC 时间 05:00，每天
+    - cron: "00 5 * * *"  # UTC 时间 04:50，每天
 
 jobs:
   run-script:
@@ -23,7 +23,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests lxml
 
-      - name: Debug: List files
+      - name: Debug List files
         run: ls -al
 
       - name: Run pa-test.py
