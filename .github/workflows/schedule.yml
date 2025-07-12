@@ -1,9 +1,9 @@
 name: Scheduled Flight Script
 
 on:
-  workflow_dispatch:        # 允许手动触发
+  workflow_dispatch:
   schedule:
-    - cron: "0 6 * * *"     # 每天 UTC 06:00 → CDT 01:00
+    - cron: "0 8 * * *"
 
 jobs:
   run-script:
