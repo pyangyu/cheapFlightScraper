@@ -3,7 +3,7 @@ name: Scheduled Flight Script
 on:
   workflow_dispatch:  # ✅ 允许手动触发
   schedule:           # ✅ 每天自动触发
-    - cron: "00 5 * * *"  # UTC 时间 04:50，每天
+    - cron: "25 5 * * *"  # ⏰ UTC 时间 05:25 = CDT 12:25 AM in daylight saving time!
 
 jobs:
   run-script:
@@ -35,4 +35,6 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add flights_output_new.json
           git commit -m "Update flights_output_new.json (scheduled)"
-          git push
+          git push origin HEAD:${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
