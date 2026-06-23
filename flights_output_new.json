@@ -1,105 +1,35 @@
 {
-  "houston": {
-    "west-palm-beach": [
+  "atlanta": {
+    "las-vegas": [
+      {
+        "airline": "Delta",
+        "is_nonstop": true,
+        "min_price": 249,
+        "price_range": {
+          "min": 295,
+          "max": 750
+        },
+        "weekly_flights": 62,
+        "flight_type": "nonstop"
+      },
       {
         "airline": "Southwest",
-        "is_nonstop": false,
-        "min_price": 309,
-        "price_range": {
-          "min": 260,
-          "max": 430
-        },
-        "weekly_flights": 1111,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "American",
-        "is_nonstop": false,
-        "min_price": 309,
-        "price_range": {
-          "min": 245,
-          "max": 435
-        },
-        "weekly_flights": 570,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "Delta",
-        "is_nonstop": false,
-        "min_price": 309,
-        "price_range": {
-          "min": 245,
-          "max": 470
-        },
-        "weekly_flights": 546,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "United",
         "is_nonstop": true,
-        "min_price": 289,
+        "min_price": 259,
         "price_range": {
-          "min": 225,
-          "max": 465
+          "min": 255,
+          "max": 560
         },
-        "weekly_flights": 7,
-        "flight_type": "nonstop"
-      },
-      {
-        "airline": "JetBlue",
-        "is_nonstop": false,
-        "min_price": 279,
-        "price_range": {
-          "min": 410,
-          "max": 830
-        },
-        "weekly_flights": 21,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "Frontier",
-        "is_nonstop": false,
-        "min_price": 240,
-        "price_range": {
-          "min": 160,
-          "max": 550
-        },
-        "weekly_flights": 20,
-        "flight_type": "connecting"
-      }
-    ]
-  },
-  "boston": {
-    "atlanta": [
-      {
-        "airline": "Delta",
-        "is_nonstop": true,
-        "min_price": 262,
-        "price_range": {
-          "min": 205,
-          "max": 410
-        },
-        "weekly_flights": 74,
-        "flight_type": "nonstop"
-      },
-      {
-        "airline": "JetBlue",
-        "is_nonstop": true,
-        "min_price": 225,
-        "price_range": {
-          "min": 195,
-          "max": 410
-        },
-        "weekly_flights": 20,
+        "weekly_flights": 14,
         "flight_type": "nonstop"
       },
       {
         "airline": "Frontier",
         "is_nonstop": true,
-        "min_price": 172,
+        "min_price": 190,
         "price_range": {
-          "min": 110,
-          "max": 280
+          "min": 145,
+          "max": 320
         },
         "weekly_flights": 14,
         "flight_type": "nonstop"
@@ -107,231 +37,47 @@
       {
         "airline": "American",
         "is_nonstop": false,
-        "min_price": 252,
+        "min_price": 269,
         "price_range": {
-          "min": 185,
-          "max": 410
+          "min": 275,
+          "max": 630
         },
-        "weekly_flights": 355,
+        "weekly_flights": 321,
         "flight_type": "connecting"
       },
       {
         "airline": "United",
         "is_nonstop": false,
-        "min_price": 235,
+        "min_price": 264,
         "price_range": {
-          "min": 185,
-          "max": 435
+          "min": 330,
+          "max": 670
         },
-        "weekly_flights": 161,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "Southwest",
-        "is_nonstop": false,
-        "min_price": 277,
-        "price_range": {
-          "min": 175,
-          "max": 405
-        },
-        "weekly_flights": 114,
-        "flight_type": "connecting"
-      }
-    ],
-    "denver": [
-      {
-        "airline": "United",
-        "is_nonstop": true,
-        "min_price": 219,
-        "price_range": {
-          "min": 215,
-          "max": 435
-        },
-        "weekly_flights": 42,
-        "flight_type": "nonstop"
-      },
-      {
-        "airline": "Southwest",
-        "is_nonstop": true,
-        "min_price": 229,
-        "price_range": {
-          "min": 215,
-          "max": 425
-        },
-        "weekly_flights": 21,
-        "flight_type": "nonstop"
-      },
-      {
-        "airline": "JetBlue",
-        "is_nonstop": true,
-        "min_price": 219,
-        "price_range": {
-          "min": 225,
-          "max": 475
-        },
-        "weekly_flights": 21,
-        "flight_type": "nonstop"
-      },
-      {
-        "airline": "Delta",
-        "is_nonstop": true,
-        "min_price": 279,
-        "price_range": {
-          "min": 255,
-          "max": 560
-        },
-        "weekly_flights": 7,
-        "flight_type": "nonstop"
-      },
-      {
-        "airline": "American",
-        "is_nonstop": false,
-        "min_price": 239,
-        "price_range": {
-          "min": 235,
-          "max": 465
-        },
-        "weekly_flights": 299,
+        "weekly_flights": 215,
         "flight_type": "connecting"
       },
       {
         "airline": "Alaska",
         "is_nonstop": false,
-        "min_price": 415,
+        "min_price": 369,
         "price_range": {
-          "min": 390,
-          "max": 880
+          "min": 315,
+          "max": 890
         },
-        "weekly_flights": 21,
+        "weekly_flights": 22,
         "flight_type": "connecting"
       }
     ],
-    "honolulu": [
-      {
-        "airline": "United",
-        "is_nonstop": false,
-        "min_price": 539,
-        "price_range": {
-          "min": 540,
-          "max": 910
-        },
-        "weekly_flights": 443,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "Delta",
-        "is_nonstop": false,
-        "min_price": 624,
-        "price_range": {
-          "min": 630,
-          "max": 1300
-        },
-        "weekly_flights": 199,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "American",
-        "is_nonstop": false,
-        "min_price": 602,
-        "price_range": {
-          "min": 610,
-          "max": 1150
-        },
-        "weekly_flights": 166,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "Alaska",
-        "is_nonstop": false,
-        "min_price": 602,
-        "price_range": {
-          "min": 590,
-          "max": 1150
-        },
-        "weekly_flights": 87,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "Southwest",
-        "is_nonstop": false,
-        "min_price": 573,
-        "price_range": {
-          "min": 710,
-          "max": 1200
-        },
-        "weekly_flights": 42,
-        "flight_type": "connecting"
-      }
-    ],
-    "anchorage": [
-      {
-        "airline": "Delta",
-        "is_nonstop": false,
-        "min_price": 535,
-        "price_range": {
-          "min": 410,
-          "max": 900
-        },
-        "weekly_flights": 315,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "Alaska",
-        "is_nonstop": true,
-        "min_price": 535,
-        "price_range": {
-          "min": 470,
-          "max": 1000
-        },
-        "weekly_flights": 202,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "United",
-        "is_nonstop": false,
-        "min_price": 518,
-        "price_range": {
-          "min": 435,
-          "max": 880
-        },
-        "weekly_flights": 216,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "American",
-        "is_nonstop": false,
-        "min_price": 530,
-        "price_range": {
-          "min": 520,
-          "max": 1100
-        },
-        "weekly_flights": 143,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "Southwest",
-        "is_nonstop": false,
-        "min_price": 695,
-        "price_range": {
-          "min": 890,
-          "max": 1350
-        },
-        "weekly_flights": 21,
-        "flight_type": "connecting"
-      }
-    ]
-  },
-  "detroit": {
-    "atlanta": [
+    "fort-lauderdale": [
       {
         "airline": "Delta",
         "is_nonstop": true,
         "min_price": 119,
         "price_range": {
-          "min": 125,
-          "max": 500
+          "min": 115,
+          "max": 345
         },
-        "weekly_flights": 73,
+        "weekly_flights": 146,
         "flight_type": "nonstop"
       },
       {
@@ -339,148 +85,89 @@
         "is_nonstop": true,
         "min_price": 80,
         "price_range": {
-          "min": 75,
-          "max": 200
+          "min": 55,
+          "max": 145
         },
-        "weekly_flights": 14,
+        "weekly_flights": 42,
         "flight_type": "nonstop"
       },
       {
         "airline": "American",
-        "is_nonstop": false,
-        "min_price": 361,
-        "price_range": {
-          "min": 185,
-          "max": 510
-        },
-        "weekly_flights": 336,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "United",
-        "is_nonstop": false,
-        "min_price": 187,
-        "price_range": {
-          "min": 255,
-          "max": 550
-        },
-        "weekly_flights": 234,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "Southwest",
-        "is_nonstop": false,
-        "min_price": 228,
-        "price_range": {
-          "min": 180,
-          "max": 510
-        },
-        "weekly_flights": 115,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "JetBlue",
-        "is_nonstop": false,
-        "min_price": 302,
-        "price_range": {
-          "min": 290,
-          "max": 870
-        },
-        "weekly_flights": 42,
-        "flight_type": "connecting"
-      }
-    ],
-    "tampa": [
-      {
-        "airline": "Delta",
         "is_nonstop": true,
-        "min_price": 254,
+        "min_price": 167,
         "price_range": {
-          "min": 175,
-          "max": 425
+          "min": 150,
+          "max": 330
         },
         "weekly_flights": 28,
         "flight_type": "nonstop"
       },
       {
-        "airline": "American",
-        "is_nonstop": false,
-        "min_price": 274,
+        "airline": "JetBlue",
+        "is_nonstop": true,
+        "min_price": 119,
         "price_range": {
-          "min": 200,
-          "max": 410
+          "min": 125,
+          "max": 520
         },
-        "weekly_flights": 381,
+        "weekly_flights": 21,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 208,
+        "price_range": {
+          "min": 150,
+          "max": 305
+        },
+        "weekly_flights": 387,
         "flight_type": "connecting"
       },
       {
         "airline": "United",
         "is_nonstop": false,
-        "min_price": 274,
+        "min_price": 264,
         "price_range": {
-          "min": 250,
-          "max": 520
+          "min": 195,
+          "max": 445
         },
-        "weekly_flights": 213,
+        "weekly_flights": 257,
         "flight_type": "connecting"
-      },
+      }
+    ],
+    "austin": [
       {
-        "airline": "Southwest",
-        "is_nonstop": false,
-        "min_price": 274,
-        "price_range": {
-          "min": 205,
-          "max": 400
-        },
-        "weekly_flights": 189,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "Frontier",
+        "airline": "Delta",
         "is_nonstop": true,
-        "min_price": 160,
+        "min_price": 207,
         "price_range": {
-          "min": 140,
-          "max": 305
+          "min": 235,
+          "max": 550
         },
-        "weekly_flights": 3,
+        "weekly_flights": 60,
         "flight_type": "nonstop"
       },
       {
-        "airline": "JetBlue",
-        "is_nonstop": false,
-        "min_price": 229,
-        "price_range": {
-          "min": 310,
-          "max": 800
-        },
-        "weekly_flights": 42,
-        "flight_type": "connecting"
-      }
-    ]
-  },
-  "philadelphia": {
-    "fort-myers": [
-      {
-        "airline": "American",
+        "airline": "Southwest",
         "is_nonstop": true,
-        "min_price": 396,
+        "min_price": 207,
         "price_range": {
-          "min": 265,
-          "max": 490
+          "min": 215,
+          "max": 510
         },
         "weekly_flights": 20,
         "flight_type": "nonstop"
       },
       {
-        "airline": "Delta",
+        "airline": "American",
         "is_nonstop": false,
-        "min_price": 489,
+        "min_price": 227,
         "price_range": {
-          "min": 285,
-          "max": 560
+          "min": 215,
+          "max": 510
         },
-        "weekly_flights": 309,
+        "weekly_flights": 459,
         "flight_type": "connecting"
       },
       {
@@ -488,264 +175,729 @@
         "is_nonstop": true,
         "min_price": 118,
         "price_range": {
-          "min": 145,
-          "max": 355
+          "min": 125,
+          "max": 280
         },
-        "weekly_flights": 3,
-        "flight_type": "nonstop"
-      },
-      {
-        "airline": "Southwest",
-        "is_nonstop": false,
-        "min_price": 390,
-        "price_range": {
-          "min": 290,
-          "max": 495
-        },
-        "weekly_flights": 133,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "United",
-        "is_nonstop": false,
-        "min_price": 469,
-        "price_range": {
-          "min": 360,
-          "max": 610
-        },
-        "weekly_flights": 84,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "JetBlue",
-        "is_nonstop": false,
-        "min_price": 337,
-        "price_range": {
-          "min": 370,
-          "max": 990
-        },
-        "weekly_flights": 28,
-        "flight_type": "connecting"
-      }
-    ]
-  },
-  "baltimore": {
-    "columbus": [
-      {
-        "airline": "American",
-        "is_nonstop": true,
-        "min_price": 156,
-        "price_range": {
-          "min": 200,
-          "max": 415
-        },
-        "weekly_flights": 34,
+        "weekly_flights": 6,
         "flight_type": "nonstop"
       },
       {
         "airline": "United",
-        "is_nonstop": true,
-        "min_price": 156,
-        "price_range": {
-          "min": 205,
-          "max": 430
-        },
-        "weekly_flights": 28,
-        "flight_type": "nonstop"
-      },
-      {
-        "airline": "Southwest",
-        "is_nonstop": true,
-        "min_price": 156,
-        "price_range": {
-          "min": 200,
-          "max": 415
-        },
-        "weekly_flights": 28,
-        "flight_type": "nonstop"
-      },
-      {
-        "airline": "Delta",
         "is_nonstop": false,
-        "min_price": 186,
+        "min_price": 201,
         "price_range": {
-          "min": 230,
-          "max": 490
+          "min": 260,
+          "max": 600
         },
-        "weekly_flights": 1203,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "Frontier",
-        "is_nonstop": false,
-        "min_price": 240,
-        "price_range": {
-          "min": 185,
-          "max": 620
-        },
-        "weekly_flights": 48,
-        "flight_type": "connecting"
-      }
-    ],
-    "indianapolis": [
-      {
-        "airline": "American",
-        "is_nonstop": true,
-        "min_price": 249,
-        "price_range": {
-          "min": 185,
-          "max": 320
-        },
-        "weekly_flights": 40,
-        "flight_type": "nonstop"
-      },
-      {
-        "airline": "United",
-        "is_nonstop": true,
-        "min_price": 249,
-        "price_range": {
-          "min": 185,
-          "max": 320
-        },
-        "weekly_flights": 26,
-        "flight_type": "nonstop"
-      },
-      {
-        "airline": "Southwest",
-        "is_nonstop": true,
-        "min_price": 274,
-        "price_range": {
-          "min": 220,
-          "max": 360
-        },
-        "weekly_flights": 27,
-        "flight_type": "nonstop"
-      },
-      {
-        "airline": "Delta",
-        "is_nonstop": false,
-        "min_price": 269,
-        "price_range": {
-          "min": 205,
-          "max": 420
-        },
-        "weekly_flights": 1039,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "Frontier",
-        "is_nonstop": false,
-        "min_price": 240,
-        "price_range": {
-          "min": 185,
-          "max": 550
-        },
-        "weekly_flights": 56,
+        "weekly_flights": 223,
         "flight_type": "connecting"
       },
       {
         "airline": "Alaska",
         "is_nonstop": false,
-        "min_price": 621,
+        "min_price": 747,
         "price_range": {
-          "min": 660,
-          "max": 1500
+          "min": 540,
+          "max": 10500
         },
-        "weekly_flights": 51,
+        "weekly_flights": 21,
         "flight_type": "connecting"
       }
-    ]
-  },
-  "salt-lake-city": {
-    "san-francisco": [
+    ],
+    "portland": [
       {
         "airline": "Delta",
         "is_nonstop": true,
-        "min_price": 254,
+        "min_price": 337,
         "price_range": {
-          "min": 175,
-          "max": 425
+          "min": 315,
+          "max": 600
         },
-        "weekly_flights": 32,
+        "weekly_flights": 28,
         "flight_type": "nonstop"
       },
       {
-        "airline": "United",
+        "airline": "Alaska",
         "is_nonstop": true,
-        "min_price": 254,
+        "min_price": 337,
         "price_range": {
-          "min": 180,
-          "max": 410
-        },
-        "weekly_flights": 26,
-        "flight_type": "nonstop"
-      },
-      {
-        "airline": "Frontier",
-        "is_nonstop": true,
-        "min_price": 155,
-        "price_range": {
-          "min": 120,
-          "max": 280
+          "min": 285,
+          "max": 620
         },
         "weekly_flights": 7,
         "flight_type": "nonstop"
       },
       {
-        "airline": "Alaska",
-        "is_nonstop": false,
-        "min_price": 249,
-        "price_range": {
-          "min": 245,
-          "max": 530
-        },
-        "weekly_flights": 159,
-        "flight_type": "connecting"
-      },
-      {
         "airline": "Southwest",
         "is_nonstop": false,
-        "min_price": 274,
+        "min_price": 343,
         "price_range": {
-          "min": 200,
-          "max": 415
+          "min": 295,
+          "max": 550
         },
-        "weekly_flights": 142,
+        "weekly_flights": 345,
         "flight_type": "connecting"
       },
       {
         "airline": "American",
         "is_nonstop": false,
-        "min_price": 279,
+        "min_price": 357,
         "price_range": {
-          "min": 255,
+          "min": 275,
           "max": 580
         },
-        "weekly_flights": 38,
+        "weekly_flights": 173,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 352,
+        "price_range": {
+          "min": 285,
+          "max": 600
+        },
+        "weekly_flights": 163,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": false,
+        "min_price": 250,
+        "price_range": {
+          "min": 220,
+          "max": 530
+        },
+        "weekly_flights": 21,
         "flight_type": "connecting"
       }
     ]
   },
-  "san-diego": {
+  "los-angeles": {
     "portland": [
       {
         "airline": "Alaska",
         "is_nonstop": true,
-        "min_price": 156,
+        "min_price": 217,
         "price_range": {
           "min": 185,
-          "max": 445
+          "max": 420
+        },
+        "weekly_flights": 32,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": true,
+        "min_price": 222,
+        "price_range": {
+          "min": 185,
+          "max": 435
+        },
+        "weekly_flights": 32,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": true,
+        "min_price": 237,
+        "price_range": {
+          "min": 195,
+          "max": 420
+        },
+        "weekly_flights": 11,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 242,
+        "price_range": {
+          "min": 195,
+          "max": 405
+        },
+        "weekly_flights": 331,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": true,
+        "min_price": 133,
+        "price_range": {
+          "min": 130,
+          "max": 300
+        },
+        "weekly_flights": 5,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 242,
+        "price_range": {
+          "min": 215,
+          "max": 490
+        },
+        "weekly_flights": 180,
+        "flight_type": "connecting"
+      }
+    ],
+    "jacksonville": [
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 365,
+        "price_range": {
+          "min": 340,
+          "max": 670
+        },
+        "weekly_flights": 683,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 365,
+        "price_range": {
+          "min": 355,
+          "max": 790
+        },
+        "weekly_flights": 473,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 365,
+        "price_range": {
+          "min": 360,
+          "max": 670
+        },
+        "weekly_flights": 346,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 365,
+        "price_range": {
+          "min": 345,
+          "max": 690
+        },
+        "weekly_flights": 338,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Breeze",
+        "is_nonstop": true,
+        "min_price": 288,
+        "price_range": {
+          "min": 255,
+          "max": 680
+        },
+        "weekly_flights": 3,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "JetBlue",
+        "is_nonstop": false,
+        "min_price": 474,
+        "price_range": {
+          "min": 425,
+          "max": 1000
+        },
+        "weekly_flights": 39,
+        "flight_type": "connecting"
+      }
+    ]
+  },
+  "dallas": {
+    "fort-myers": [
+      {
+        "airline": "Southwest",
+        "is_nonstop": true,
+        "min_price": 338,
+        "price_range": {
+          "min": 315,
+          "max": 455
+        },
+        "weekly_flights": 2364,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": true,
+        "min_price": 381,
+        "price_range": {
+          "min": 315,
+          "max": 460
         },
         "weekly_flights": 28,
         "flight_type": "nonstop"
       },
       {
-        "airline": "Southwest",
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 338,
+        "price_range": {
+          "min": 340,
+          "max": 540
+        },
+        "weekly_flights": 382,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 317,
+        "price_range": {
+          "min": 310,
+          "max": 480
+        },
+        "weekly_flights": 148,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": false,
+        "min_price": 240,
+        "price_range": {
+          "min": 200,
+          "max": 470
+        },
+        "weekly_flights": 20,
+        "flight_type": "connecting"
+      }
+    ]
+  },
+  "denver": {
+    "houston": [
+      {
+        "airline": "United",
         "is_nonstop": true,
-        "min_price": 156,
+        "min_price": 249,
         "price_range": {
           "min": 195,
-          "max": 445
+          "max": 415
+        },
+        "weekly_flights": 82,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": true,
+        "min_price": 253,
+        "price_range": {
+          "min": 195,
+          "max": 375
+        },
+        "weekly_flights": 48,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": true,
+        "min_price": 144,
+        "price_range": {
+          "min": 100,
+          "max": 230
+        },
+        "weekly_flights": 18,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 273,
+        "price_range": {
+          "min": 220,
+          "max": 475
+        },
+        "weekly_flights": 476,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 273,
+        "price_range": {
+          "min": 235,
+          "max": 660
+        },
+        "weekly_flights": 236,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Alaska",
+        "is_nonstop": false,
+        "min_price": 828,
+        "price_range": {
+          "min": 440,
+          "max": 1150
+        },
+        "weekly_flights": 21,
+        "flight_type": "connecting"
+      }
+    ],
+    "fort-myers": [
+      {
+        "airline": "Southwest",
+        "is_nonstop": true,
+        "min_price": 433,
+        "price_range": {
+          "min": 385,
+          "max": 670
+        },
+        "weekly_flights": 7,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": true,
+        "min_price": 451,
+        "price_range": {
+          "min": 330,
+          "max": 600
+        },
+        "weekly_flights": 12,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 539,
+        "price_range": {
+          "min": 425,
+          "max": 870
+        },
+        "weekly_flights": 312,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 451,
+        "price_range": {
+          "min": 410,
+          "max": 740
+        },
+        "weekly_flights": 242,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "JetBlue",
+        "is_nonstop": false,
+        "min_price": 418,
+        "price_range": {
+          "min": 470,
+          "max": 1050
+        },
+        "weekly_flights": 21,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": false,
+        "min_price": 314,
+        "price_range": {
+          "min": 200,
+          "max": 495
+        },
+        "weekly_flights": 19,
+        "flight_type": "connecting"
+      }
+    ],
+    "anchorage": [
+      {
+        "airline": "United",
+        "is_nonstop": true,
+        "min_price": 403,
+        "price_range": {
+          "min": 410,
+          "max": 920
+        },
+        "weekly_flights": 20,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Alaska",
+        "is_nonstop": true,
+        "min_price": 397,
+        "price_range": {
+          "min": 375,
+          "max": 800
+        },
+        "weekly_flights": 8,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": true,
+        "min_price": 403,
+        "price_range": {
+          "min": 480,
+          "max": 880
+        },
+        "weekly_flights": 7,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 423,
+        "price_range": {
+          "min": 360,
+          "max": 890
+        },
+        "weekly_flights": 169,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 423,
+        "price_range": {
+          "min": 445,
+          "max": 980
+        },
+        "weekly_flights": 80,
+        "flight_type": "connecting"
+      }
+    ]
+  },
+  "new-york": {
+    "orlando": [
+      {
+        "airline": "JetBlue",
+        "is_nonstop": true,
+        "min_price": 251,
+        "price_range": {
+          "min": 145,
+          "max": 340
+        },
+        "weekly_flights": 109,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": true,
+        "min_price": 177,
+        "price_range": {
+          "min": 150,
+          "max": 380
+        },
+        "weekly_flights": 69,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": true,
+        "min_price": 177,
+        "price_range": {
+          "min": 145,
+          "max": 370
+        },
+        "weekly_flights": 63,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": true,
+        "min_price": 177,
+        "price_range": {
+          "min": 155,
+          "max": 355
+        },
+        "weekly_flights": 13,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": true,
+        "min_price": 86,
+        "price_range": {
+          "min": 90,
+          "max": 270
+        },
+        "weekly_flights": 14,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 237,
+        "price_range": {
+          "min": 165,
+          "max": 370
+        },
+        "weekly_flights": 215,
+        "flight_type": "connecting"
+      }
+    ],
+    "raleigh": [
+      {
+        "airline": "Delta",
+        "is_nonstop": true,
+        "min_price": 217,
+        "price_range": {
+          "min": 150,
+          "max": 325
+        },
+        "weekly_flights": 88,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": true,
+        "min_price": 217,
+        "price_range": {
+          "min": 145,
+          "max": 290
+        },
+        "weekly_flights": 53,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": true,
+        "min_price": 217,
+        "price_range": {
+          "min": 135,
+          "max": 260
+        },
+        "weekly_flights": 35,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "JetBlue",
+        "is_nonstop": true,
+        "min_price": 217,
+        "price_range": {
+          "min": 135,
+          "max": 315
+        },
+        "weekly_flights": 24,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 267,
+        "price_range": {
+          "min": 185,
+          "max": 370
+        },
+        "weekly_flights": 130,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": false,
+        "min_price": 246,
+        "price_range": {
+          "min": 120,
+          "max": 315
+        },
+        "weekly_flights": 67,
+        "flight_type": "connecting"
+      }
+    ]
+  },
+  "san-francisco": {
+    "minneapolis": [
+      {
+        "airline": "Delta",
+        "is_nonstop": true,
+        "min_price": 329,
+        "price_range": {
+          "min": 265,
+          "max": 510
+        },
+        "weekly_flights": 31,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": true,
+        "min_price": 339,
+        "price_range": {
+          "min": 265,
+          "max": 500
+        },
+        "weekly_flights": 13,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 349,
+        "price_range": {
+          "min": 285,
+          "max": 560
+        },
+        "weekly_flights": 156,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 349,
+        "price_range": {
+          "min": 290,
+          "max": 490
+        },
+        "weekly_flights": 152,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Alaska",
+        "is_nonstop": false,
+        "min_price": 309,
+        "price_range": {
+          "min": 335,
+          "max": 710
+        },
+        "weekly_flights": 48,
+        "flight_type": "connecting"
+      }
+    ],
+    "washington": [
+      {
+        "destination_info": "Most visitors arrive in summer (Jun–Sep) when the weather is mild and mostly dry. Winter through spring (Nov–May) tends to be cool and rainy. Local events include the Skagit Valley Tulip Festival (Apr), Seattle International Film Festival (May–Jun) and Bumbershoot (Sep), a music and arts festival held in Seattle."
+      }
+    ]
+  },
+  "seattle": {
+    "san-diego": [
+      {
+        "airline": "Alaska",
+        "is_nonstop": true,
+        "min_price": 167,
+        "price_range": {
+          "min": 175,
+          "max": 480
+        },
+        "weekly_flights": 58,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": true,
+        "min_price": 167,
+        "price_range": {
+          "min": 175,
+          "max": 550
+        },
+        "weekly_flights": 34,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": true,
+        "min_price": 167,
+        "price_range": {
+          "min": 180,
+          "max": 480
         },
         "weekly_flights": 7,
         "flight_type": "nonstop"
@@ -755,32 +907,21 @@
         "is_nonstop": false,
         "min_price": 187,
         "price_range": {
-          "min": 205,
-          "max": 520
+          "min": 200,
+          "max": 530
         },
-        "weekly_flights": 174,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "Delta",
-        "is_nonstop": false,
-        "min_price": 176,
-        "price_range": {
-          "min": 195,
-          "max": 495
-        },
-        "weekly_flights": 167,
+        "weekly_flights": 211,
         "flight_type": "connecting"
       },
       {
         "airline": "American",
         "is_nonstop": false,
-        "min_price": 251,
+        "min_price": 317,
         "price_range": {
-          "min": 280,
-          "max": 610
+          "min": 295,
+          "max": 650
         },
-        "weekly_flights": 44,
+        "weekly_flights": 48,
         "flight_type": "connecting"
       },
       {
@@ -788,150 +929,1364 @@
         "is_nonstop": false,
         "min_price": 240,
         "price_range": {
+          "min": 175,
+          "max": 380
+        },
+        "weekly_flights": 21,
+        "flight_type": "connecting"
+      }
+    ],
+    "anchorage": [
+      {
+        "airline": "Alaska",
+        "is_nonstop": true,
+        "min_price": 377,
+        "price_range": {
+          "min": 275,
+          "max": 580
+        },
+        "weekly_flights": 124,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": true,
+        "min_price": 397,
+        "price_range": {
+          "min": 275,
+          "max": 610
+        },
+        "weekly_flights": 35,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 417,
+        "price_range": {
+          "min": 370,
+          "max": 730
+        },
+        "weekly_flights": 99,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 417,
+        "price_range": {
+          "min": 550,
+          "max": 870
+        },
+        "weekly_flights": 93,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 487,
+        "price_range": {
+          "min": 435,
+          "max": 800
+        },
+        "weekly_flights": 43,
+        "flight_type": "connecting"
+      }
+    ]
+  },
+  "las-vegas": {
+    "washington": [
+      {
+        "destination_info": "Most visitors arrive in summer (Jun–Sep) when the weather is mild and mostly dry. Winter through spring (Nov–May) tends to be cool and rainy. Local events include the Skagit Valley Tulip Festival (Apr), Seattle International Film Festival (May–Jun) and Bumbershoot (Sep), a music and arts festival held in Seattle."
+      }
+    ]
+  },
+  "charlotte": {
+    "portland": [
+      {
+        "airline": "American",
+        "is_nonstop": true,
+        "min_price": 438,
+        "price_range": {
+          "min": 420,
+          "max": 570
+        },
+        "weekly_flights": 14,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 485,
+        "price_range": {
+          "min": 480,
+          "max": 620
+        },
+        "weekly_flights": 228,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 485,
+        "price_range": {
+          "min": 360,
+          "max": 610
+        },
+        "weekly_flights": 157,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 355,
+        "price_range": {
+          "min": 390,
+          "max": 570
+        },
+        "weekly_flights": 132,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": false,
+        "min_price": 242,
+        "price_range": {
+          "min": 250,
+          "max": 660
+        },
+        "weekly_flights": 14,
+        "flight_type": "connecting"
+      }
+    ],
+    "san-antonio": [
+      {
+        "airline": "American",
+        "is_nonstop": true,
+        "min_price": 406,
+        "price_range": {
+          "min": 305,
+          "max": 470
+        },
+        "weekly_flights": 28,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 426,
+        "price_range": {
+          "min": 315,
+          "max": 510
+        },
+        "weekly_flights": 242,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 388,
+        "price_range": {
+          "min": 320,
+          "max": 510
+        },
+        "weekly_flights": 156,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 386,
+        "price_range": {
+          "min": 315,
+          "max": 470
+        },
+        "weekly_flights": 144,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": false,
+        "min_price": 258,
+        "price_range": {
+          "min": 220,
+          "max": 480
+        },
+        "weekly_flights": 13,
+        "flight_type": "connecting"
+      }
+    ],
+    "west-palm-beach": [
+      {
+        "airline": "American",
+        "is_nonstop": true,
+        "min_price": 357,
+        "price_range": {
+          "min": 265,
+          "max": 480
+        },
+        "weekly_flights": 35,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 491,
+        "price_range": {
+          "min": 275,
+          "max": 510
+        },
+        "weekly_flights": 279,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 353,
+        "price_range": {
+          "min": 330,
+          "max": 485
+        },
+        "weekly_flights": 80,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 445,
+        "price_range": {
+          "min": 310,
+          "max": 570
+        },
+        "weekly_flights": 55,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": false,
+        "min_price": 259,
+        "price_range": {
+          "min": 210,
+          "max": 630
+        },
+        "weekly_flights": 11,
+        "flight_type": "connecting"
+      }
+    ]
+  },
+  "boston": {
+    "cleveland": [
+      {
+        "airline": "Delta",
+        "is_nonstop": true,
+        "min_price": 247,
+        "price_range": {
+          "min": 185,
+          "max": 370
+        },
+        "weekly_flights": 20,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "JetBlue",
+        "is_nonstop": true,
+        "min_price": 169,
+        "price_range": {
           "min": 165,
-          "max": 405
+          "max": 380
+        },
+        "weekly_flights": 13,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 217,
+        "price_range": {
+          "min": 175,
+          "max": 355
+        },
+        "weekly_flights": 577,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 164,
+        "price_range": {
+          "min": 175,
+          "max": 345
+        },
+        "weekly_flights": 348,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 287,
+        "price_range": {
+          "min": 220,
+          "max": 420
+        },
+        "weekly_flights": 124,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": false,
+        "min_price": 240,
+        "price_range": {
+          "min": 150,
+          "max": 445
         },
         "weekly_flights": 22,
         "flight_type": "connecting"
       }
     ]
   },
-  "sacramento": {
-    "boston": [
-      {
-        "airline": "Southwest",
-        "is_nonstop": false,
-        "min_price": 302,
-        "price_range": {
-          "min": 270,
-          "max": 465
-        },
-        "weekly_flights": 613,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "United",
-        "is_nonstop": false,
-        "min_price": 288,
-        "price_range": {
-          "min": 260,
-          "max": 560
-        },
-        "weekly_flights": 395,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "American",
-        "is_nonstop": false,
-        "min_price": 293,
-        "price_range": {
-          "min": 260,
-          "max": 590
-        },
-        "weekly_flights": 305,
-        "flight_type": "connecting"
-      },
+  "minneapolis": {
+    "atlanta": [
       {
         "airline": "Delta",
-        "is_nonstop": false,
-        "min_price": 297,
-        "price_range": {
-          "min": 275,
-          "max": 720
-        },
-        "weekly_flights": 304,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "Alaska",
-        "is_nonstop": false,
-        "min_price": 297,
-        "price_range": {
-          "min": 330,
-          "max": 700
-        },
-        "weekly_flights": 99,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "JetBlue",
-        "is_nonstop": false,
-        "min_price": 317,
-        "price_range": {
-          "min": 370,
-          "max": 840
-        },
-        "weekly_flights": 28,
-        "flight_type": "connecting"
-      }
-    ]
-  },
-  "new-orleans": {
-    "ontario": [
-      {
-        "airline": "Southwest",
-        "is_nonstop": false,
-        "min_price": 377,
-        "price_range": {
-          "min": 345,
-          "max": 650
-        },
-        "weekly_flights": 1387,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "American",
-        "is_nonstop": false,
-        "min_price": 377,
-        "price_range": {
-          "min": 340,
-          "max": 690
-        },
-        "weekly_flights": 382,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "United",
-        "is_nonstop": false,
-        "min_price": 371,
-        "price_range": {
-          "min": 340,
-          "max": 720
-        },
-        "weekly_flights": 198,
-        "flight_type": "connecting"
-      },
-      {
-        "airline": "Delta",
-        "is_nonstop": false,
-        "min_price": 377,
+        "is_nonstop": true,
+        "min_price": 459,
         "price_range": {
           "min": 395,
-          "max": 810
+          "max": 650
         },
-        "weekly_flights": 106,
+        "weekly_flights": 60,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": true,
+        "min_price": 218,
+        "price_range": {
+          "min": 150,
+          "max": 335
+        },
+        "weekly_flights": 7,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 372,
+        "price_range": {
+          "min": 340,
+          "max": 590
+        },
+        "weekly_flights": 300,
         "flight_type": "connecting"
       },
       {
-        "airline": "Alaska",
+        "airline": "American",
         "is_nonstop": false,
-        "min_price": 403,
+        "min_price": 338,
         "price_range": {
-          "min": 435,
-          "max": 910
+          "min": 350,
+          "max": 620
+        },
+        "weekly_flights": 233,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 335,
+        "price_range": {
+          "min": 320,
+          "max": 630
+        },
+        "weekly_flights": 217,
+        "flight_type": "connecting"
+      }
+    ],
+    "charlotte": [
+      {
+        "airline": "Delta",
+        "is_nonstop": true,
+        "min_price": 345,
+        "price_range": {
+          "min": 290,
+          "max": 445
         },
         "weekly_flights": 25,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": true,
+        "min_price": 271,
+        "price_range": {
+          "min": 275,
+          "max": 435
+        },
+        "weekly_flights": 22,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 335,
+        "price_range": {
+          "min": 295,
+          "max": 490
+        },
+        "weekly_flights": 131,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 347,
+        "price_range": {
+          "min": 310,
+          "max": 460
+        },
+        "weekly_flights": 96,
         "flight_type": "connecting"
       },
       {
         "airline": "Frontier",
         "is_nonstop": false,
-        "min_price": 261,
+        "min_price": 240,
         "price_range": {
-          "min": 230,
-          "max": 590
+          "min": 200,
+          "max": 610
+        },
+        "weekly_flights": 21,
+        "flight_type": "connecting"
+      }
+    ]
+  },
+  "detroit": {
+    "oakland": [
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 369,
+        "price_range": {
+          "min": 335,
+          "max": 550
+        },
+        "weekly_flights": 1450,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 369,
+        "price_range": {
+          "min": 405,
+          "max": 930
+        },
+        "weekly_flights": 253,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Alaska",
+        "is_nonstop": false,
+        "min_price": 423,
+        "price_range": {
+          "min": 405,
+          "max": 840
+        },
+        "weekly_flights": 24,
+        "flight_type": "connecting"
+      }
+    ]
+  },
+  "nashville": {
+    "st-louis": [
+      {
+        "airline": "Southwest",
+        "is_nonstop": true,
+        "min_price": 156,
+        "price_range": {
+          "min": 205,
+          "max": 550
         },
         "weekly_flights": 25,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 309,
+        "price_range": {
+          "min": 265,
+          "max": 540
+        },
+        "weekly_flights": 438,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 205,
+        "price_range": {
+          "min": 235,
+          "max": 570
+        },
+        "weekly_flights": 377,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 176,
+        "price_range": {
+          "min": 235,
+          "max": 630
+        },
+        "weekly_flights": 202,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Alaska",
+        "is_nonstop": false,
+        "min_price": 733,
+        "price_range": {
+          "min": 570,
+          "max": 1350
+        },
+        "weekly_flights": 21,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": false,
+        "min_price": 240,
+        "price_range": {
+          "min": 175,
+          "max": 435
+        },
+        "weekly_flights": 21,
+        "flight_type": "connecting"
+      }
+    ]
+  },
+  "portland": {
+    "sacramento": [
+      {
+        "airline": "Southwest",
+        "is_nonstop": true,
+        "min_price": 169,
+        "price_range": {
+          "min": 160,
+          "max": 440
+        },
+        "weekly_flights": 29,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Alaska",
+        "is_nonstop": true,
+        "min_price": 169,
+        "price_range": {
+          "min": 170,
+          "max": 440
+        },
+        "weekly_flights": 28,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 189,
+        "price_range": {
+          "min": 185,
+          "max": 520
+        },
+        "weekly_flights": 285,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 189,
+        "price_range": {
+          "min": 210,
+          "max": 540
+        },
+        "weekly_flights": 171,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 267,
+        "price_range": {
+          "min": 300,
+          "max": 600
+        },
+        "weekly_flights": 85,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": false,
+        "min_price": 248,
+        "price_range": {
+          "min": 210,
+          "max": 470
+        },
+        "weekly_flights": 19,
+        "flight_type": "connecting"
+      }
+    ]
+  },
+  "oakland": {
+    "san-francisco": [
+      {
+        "destination_info": "How do I find cheap dates to fly from Oakland to San Francisco? It's easy to use Google Flights to find the cheapest days to fly from Oakland to San Francisco. Just click the  Departure  label near the top of the page to open the calendar. Choose a start date and a return date to see how the round-trip fare changes on those specific days.  Adjust the trip type to see one-way fares. The cheapest available flights are highlighted and easy to spot. Once you settle on dates, click the  Search  button to see flight options and book the deal. You can also turn on price tracking to get alerts if the price changes for a route or flight."
+      }
+    ],
+    "fort-myers": [
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 306,
+        "price_range": {
+          "min": 310,
+          "max": 510
+        },
+        "weekly_flights": 1767,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 396,
+        "price_range": {
+          "min": 510,
+          "max": 1800
+        },
+        "weekly_flights": 152,
+        "flight_type": "connecting"
+      }
+    ]
+  },
+  "fort-myers": {
+    "west-palm-beach": [
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 476,
+        "price_range": {
+          "min": 360,
+          "max": 590
+        },
+        "weekly_flights": 323,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 347,
+        "price_range": {
+          "min": 355,
+          "max": 670
+        },
+        "weekly_flights": 193,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 458,
+        "price_range": {
+          "min": 305,
+          "max": 670
+        },
+        "weekly_flights": 66,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "JetBlue",
+        "is_nonstop": false,
+        "min_price": 295,
+        "price_range": {
+          "min": 335,
+          "max": 930
+        },
+        "weekly_flights": 48,
+        "flight_type": "connecting"
+      }
+    ]
+  },
+  "pittsburgh": {
+    "denver": [
+      {
+        "airline": "Southwest",
+        "is_nonstop": true,
+        "min_price": 307,
+        "price_range": {
+          "min": 340,
+          "max": 680
+        },
+        "weekly_flights": 19,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": true,
+        "min_price": 307,
+        "price_range": {
+          "min": 290,
+          "max": 580
+        },
+        "weekly_flights": 14,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 327,
+        "price_range": {
+          "min": 340,
+          "max": 710
+        },
+        "weekly_flights": 333,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 327,
+        "price_range": {
+          "min": 390,
+          "max": 820
+        },
+        "weekly_flights": 333,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "JetBlue",
+        "is_nonstop": false,
+        "min_price": 260,
+        "price_range": {
+          "min": 375,
+          "max": 820
+        },
+        "weekly_flights": 35,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Alaska",
+        "is_nonstop": false,
+        "min_price": 623,
+        "price_range": {
+          "min": 470,
+          "max": 1000
+        },
+        "weekly_flights": 21,
+        "flight_type": "connecting"
+      }
+    ],
+    "minneapolis": [
+      {
+        "airline": "Delta",
+        "is_nonstop": true,
+        "min_price": 339,
+        "price_range": {
+          "min": 295,
+          "max": 610
+        },
+        "weekly_flights": 27,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 275,
+        "price_range": {
+          "min": 315,
+          "max": 580
+        },
+        "weekly_flights": 309,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 305,
+        "price_range": {
+          "min": 300,
+          "max": 570
+        },
+        "weekly_flights": 268,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 349,
+        "price_range": {
+          "min": 315,
+          "max": 570
+        },
+        "weekly_flights": 168,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Alaska",
+        "is_nonstop": false,
+        "min_price": 968,
+        "price_range": {
+          "min": 600,
+          "max": 2500
+        },
+        "weekly_flights": 21,
+        "flight_type": "connecting"
+      }
+    ]
+  },
+  "raleigh": {
+    "austin": [
+      {
+        "airline": "Southwest",
+        "is_nonstop": true,
+        "min_price": 264,
+        "price_range": {
+          "min": 265,
+          "max": 500
+        },
+        "weekly_flights": 13,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": true,
+        "min_price": 274,
+        "price_range": {
+          "min": 270,
+          "max": 550
+        },
+        "weekly_flights": 13,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 284,
+        "price_range": {
+          "min": 255,
+          "max": 495
+        },
+        "weekly_flights": 608,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 275,
+        "price_range": {
+          "min": 290,
+          "max": 580
+        },
+        "weekly_flights": 264,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": false,
+        "min_price": 250,
+        "price_range": {
+          "min": 190,
+          "max": 390
+        },
+        "weekly_flights": 25,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "JetBlue",
+        "is_nonstop": false,
+        "min_price": 423,
+        "price_range": {
+          "min": 450,
+          "max": 940
+        },
+        "weekly_flights": 21,
+        "flight_type": "connecting"
+      }
+    ]
+  },
+  "columbus": {
+    "boston": [
+      {
+        "airline": "American",
+        "is_nonstop": true,
+        "min_price": 216,
+        "price_range": {
+          "min": 245,
+          "max": 400
+        },
+        "weekly_flights": 20,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": true,
+        "min_price": 318,
+        "price_range": {
+          "min": 260,
+          "max": 445
+        },
+        "weekly_flights": 19,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 291,
+        "price_range": {
+          "min": 265,
+          "max": 465
+        },
+        "weekly_flights": 375,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 308,
+        "price_range": {
+          "min": 285,
+          "max": 450
+        },
+        "weekly_flights": 176,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Alaska",
+        "is_nonstop": false,
+        "min_price": 738,
+        "price_range": {
+          "min": 730,
+          "max": 1750
+        },
+        "weekly_flights": 21,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": false,
+        "min_price": 244,
+        "price_range": {
+          "min": 220,
+          "max": 590
+        },
+        "weekly_flights": 12,
+        "flight_type": "connecting"
+      }
+    ],
+    "austin": [
+      {
+        "airline": "Southwest",
+        "is_nonstop": true,
+        "min_price": 259,
+        "price_range": {
+          "min": 265,
+          "max": 450
+        },
+        "weekly_flights": 7,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": true,
+        "min_price": 269,
+        "price_range": {
+          "min": 275,
+          "max": 580
+        },
+        "weekly_flights": 7,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 279,
+        "price_range": {
+          "min": 275,
+          "max": 470
+        },
+        "weekly_flights": 600,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 274,
+        "price_range": {
+          "min": 260,
+          "max": 495
+        },
+        "weekly_flights": 373,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Alaska",
+        "is_nonstop": false,
+        "min_price": 718,
+        "price_range": {
+          "min": 550,
+          "max": 8400
+        },
+        "weekly_flights": 21,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": false,
+        "min_price": 242,
+        "price_range": {
+          "min": 200,
+          "max": 495
+        },
+        "weekly_flights": 18,
+        "flight_type": "connecting"
+      }
+    ],
+    "nashville": [
+      {
+        "airline": "Southwest",
+        "is_nonstop": true,
+        "min_price": 172,
+        "price_range": {
+          "min": 265,
+          "max": 520
+        },
+        "weekly_flights": 24,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 198,
+        "price_range": {
+          "min": 260,
+          "max": 490
+        },
+        "weekly_flights": 639,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 222,
+        "price_range": {
+          "min": 255,
+          "max": 510
+        },
+        "weekly_flights": 396,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 192,
+        "price_range": {
+          "min": 280,
+          "max": 560
+        },
+        "weekly_flights": 359,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Alaska",
+        "is_nonstop": false,
+        "min_price": 763,
+        "price_range": {
+          "min": 580,
+          "max": 1500
+        },
+        "weekly_flights": 21,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": false,
+        "min_price": 240,
+        "price_range": {
+          "min": 200,
+          "max": 560
+        },
+        "weekly_flights": 15,
+        "flight_type": "connecting"
+      }
+    ],
+    "jacksonville": [
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 316,
+        "price_range": {
+          "min": 235,
+          "max": 490
+        },
+        "weekly_flights": 604,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 259,
+        "price_range": {
+          "min": 235,
+          "max": 520
+        },
+        "weekly_flights": 559,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 316,
+        "price_range": {
+          "min": 300,
+          "max": 570
+        },
+        "weekly_flights": 255,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 284,
+        "price_range": {
+          "min": 260,
+          "max": 480
+        },
+        "weekly_flights": 241,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Breeze",
+        "is_nonstop": true,
+        "min_price": 123,
+        "price_range": {
+          "min": 130,
+          "max": 360
+        },
+        "weekly_flights": 2,
+        "flight_type": "nonstop"
+      }
+    ]
+  },
+  "ontario": {
+    "washington": [
+      {
+        "destination_info": "Most visitors arrive in summer (Jun–Sep) when the weather is mild and mostly dry. Winter through spring (Nov–May) tends to be cool and rainy. Local events include the Skagit Valley Tulip Festival (Apr), Seattle International Film Festival (May–Jun) and Bumbershoot (Sep), a music and arts festival held in Seattle."
+      }
+    ]
+  },
+  "indianapolis": {
+    "portland": [
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 369,
+        "price_range": {
+          "min": 355,
+          "max": 640
+        },
+        "weekly_flights": 453,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 369,
+        "price_range": {
+          "min": 335,
+          "max": 680
+        },
+        "weekly_flights": 302,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 369,
+        "price_range": {
+          "min": 340,
+          "max": 670
+        },
+        "weekly_flights": 279,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 369,
+        "price_range": {
+          "min": 325,
+          "max": 700
+        },
+        "weekly_flights": 277,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Allegiant",
+        "is_nonstop": true,
+        "min_price": 248,
+        "price_range": {
+          "min": 145,
+          "max": 335
+        },
+        "weekly_flights": 2,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Alaska",
+        "is_nonstop": false,
+        "min_price": 369,
+        "price_range": {
+          "min": 370,
+          "max": 730
+        },
+        "weekly_flights": 77,
+        "flight_type": "connecting"
+      }
+    ]
+  },
+  "cincinnati": {
+    "fort-lauderdale": [
+      {
+        "airline": "American",
+        "is_nonstop": true,
+        "min_price": 219,
+        "price_range": {
+          "min": 225,
+          "max": 410
+        },
+        "weekly_flights": 14,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": true,
+        "min_price": 209,
+        "price_range": {
+          "min": 225,
+          "max": 510
+        },
+        "weekly_flights": 14,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 239,
+        "price_range": {
+          "min": 275,
+          "max": 475
+        },
+        "weekly_flights": 354,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Allegiant",
+        "is_nonstop": true,
+        "min_price": 130,
+        "price_range": {
+          "min": 140,
+          "max": 380
+        },
+        "weekly_flights": 7,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "Southwest",
+        "is_nonstop": false,
+        "min_price": 239,
+        "price_range": {
+          "min": 245,
+          "max": 415
+        },
+        "weekly_flights": 208,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": true,
+        "min_price": 118,
+        "price_range": {
+          "min": 120,
+          "max": 330
+        },
+        "weekly_flights": 3,
+        "flight_type": "nonstop"
+      }
+    ],
+    "nashville": [
+      {
+        "airline": "Southwest",
+        "is_nonstop": true,
+        "min_price": 277,
+        "price_range": {
+          "min": 240,
+          "max": 460
+        },
+        "weekly_flights": 14,
+        "flight_type": "nonstop"
+      },
+      {
+        "airline": "American",
+        "is_nonstop": false,
+        "min_price": 367,
+        "price_range": {
+          "min": 280,
+          "max": 455
+        },
+        "weekly_flights": 600,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Delta",
+        "is_nonstop": false,
+        "min_price": 287,
+        "price_range": {
+          "min": 250,
+          "max": 540
+        },
+        "weekly_flights": 368,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "United",
+        "is_nonstop": false,
+        "min_price": 287,
+        "price_range": {
+          "min": 260,
+          "max": 530
+        },
+        "weekly_flights": 360,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Alaska",
+        "is_nonstop": false,
+        "min_price": 733,
+        "price_range": {
+          "min": 495,
+          "max": 1350
+        },
+        "weekly_flights": 21,
+        "flight_type": "connecting"
+      },
+      {
+        "airline": "Frontier",
+        "is_nonstop": false,
+        "min_price": 248,
+        "price_range": {
+          "min": 185,
+          "max": 600
+        },
+        "weekly_flights": 20,
         "flight_type": "connecting"
       }
     ]
